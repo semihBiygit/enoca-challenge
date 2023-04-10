@@ -32,8 +32,9 @@ EnocaAPI, şirket ve çalışan bilgilerini yönetmek için kullanılan bir API'
    mvn spring-boot:run
 ```
 7. API, http://localhost:8080 adresinde çalışmaya başlayacaktır. İsterseniz http://localhost:8080/swagger-ui/index.html adresinden Swagger ile veya Postman gibi bir API test aracı kullanarak API endpointlerine istekler yapabilirsiniz.
+---
 ![Swagger](assets/swagger-ui.jpg)
-
+---
 # Proje API Dokümantasyonu
 
 Proje, aşağıdaki API endpointlerini sağlar:
