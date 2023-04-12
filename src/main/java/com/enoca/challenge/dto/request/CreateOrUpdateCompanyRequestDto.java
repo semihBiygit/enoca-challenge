@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateCompanyRequestDto {
+public class CreateOrUpdateCompanyRequestDto {
     private String name;
 }

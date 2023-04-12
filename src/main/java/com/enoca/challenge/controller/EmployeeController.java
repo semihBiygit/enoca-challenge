@@ -1,8 +1,7 @@
 package com.enoca.challenge.controller;
 
-import com.enoca.challenge.dto.request.CreateEmployeeRequestDto;
+import com.enoca.challenge.dto.request.CreateOrUpdateEmployeeRequestDto;
 import com.enoca.challenge.dto.response.EmployeeResponseDto;
-import com.enoca.challenge.model.Employee;
 import com.enoca.challenge.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,7 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @PostMapping
-    public EmployeeResponseDto create(@RequestBody CreateEmployeeRequestDto dto) {
+    public EmployeeResponseDto create(@RequestBody CreateOrUpdateEmployeeRequestDto dto) {
         return employeeService.create(dto);
 
     }
@@ -33,8 +32,13 @@ public class EmployeeController {
         return employeeService.getById(id);
     }
 
+    @GetMapping("/firstName/{firstName}")
+    public List<EmployeeResponseDto> getAllByFirstName(@PathVariable String firstName) {
+        return employeeService.getAllByFirstName(firstName);
+    }
+
     @PutMapping("/{id}")
-    public EmployeeResponseDto update(@PathVariable Long id, @RequestBody CreateEmployeeRequestDto dto) {
+    public EmployeeResponseDto update(@PathVariable Long id, @RequestBody CreateOrUpdateEmployeeRequestDto dto) {
         return employeeService.update(id, dto);
     }
 

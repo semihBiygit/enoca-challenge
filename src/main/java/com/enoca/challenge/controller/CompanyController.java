@@ -1,6 +1,6 @@
 package com.enoca.challenge.controller;
 
-import com.enoca.challenge.dto.request.CreateCompanyRequestDto;
+import com.enoca.challenge.dto.request.CreateOrUpdateCompanyRequestDto;
 import com.enoca.challenge.dto.response.CompanyResponseDto;
 import com.enoca.challenge.service.CompanyService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ public class CompanyController {
     private final CompanyService companyService;
 
     @PostMapping
-    public CompanyResponseDto create(@RequestBody CreateCompanyRequestDto dto) {
+    public CompanyResponseDto create(@RequestBody CreateOrUpdateCompanyRequestDto dto) {
         return companyService.create(dto);
     }
 
@@ -31,8 +31,13 @@ public class CompanyController {
         return companyService.getById(id);
     }
 
+    @GetMapping("/name/{name}")
+    public CompanyResponseDto getByName(@PathVariable String name) {
+        return companyService.getByName(name);
+    }
+
     @PutMapping("/{id}")
-    public CompanyResponseDto update(@PathVariable Long id, @RequestBody CreateCompanyRequestDto dto) {
+    public CompanyResponseDto update(@PathVariable Long id, @RequestBody CreateOrUpdateCompanyRequestDto dto) {
         return companyService.update(id, dto);
     }
 
